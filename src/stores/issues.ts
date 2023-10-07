@@ -13,6 +13,13 @@ export const useIssuesStore = defineStore('counter', () => {
     // Getters
 
     // Actions
-    // toggleLabel(labelName: string) {},
+    toggleLabel(labelName: string) {
+      if (labels.value.includes(labelName)) {
+        labels.value = labels.value.filter((label) => label !== labelName);
+        return;
+      }
+
+      labels.value.push(labelName);
+    },
   };
 });
