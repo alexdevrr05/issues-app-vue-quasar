@@ -12,6 +12,7 @@
       </q-toolbar>
     </q-header>
 
+    <!-- sidebar/drawer -->
     <q-drawer v-model="leftDrawerOpen" bordered>
       <q-list>
         <q-item-label header>
