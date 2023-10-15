@@ -20,7 +20,7 @@ const issue = toRef(props, 'issue');
     <q-item>
       <q-item-section avatar>
         <q-avatar>
-          <img :src="issue.user.avatar_url" alt="User Avatar">
+          <img :src="issue.user?.avatar_url" alt="User Avatar">
         </q-avatar>
       </q-item-section>
 
@@ -74,7 +74,8 @@ const issue = toRef(props, 'issue');
 }
 
 /* Hacemos esto porque hay code's gigantes */
-.q-item__section code {
+.q-item__section,
+h3 code {
   white-space: pre-wrap;
   /* Controla el flujo del texto y permite el ajuste de línea */
   overflow-x: auto;
