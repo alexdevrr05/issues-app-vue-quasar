@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/vue-query';
 import { githubApi } from 'src/api/githubApi';
 import { Issue } from '../interfaces/issue';
-import { useIssuesStore } from 'src/stores/issues';
-import { toRefs } from 'vue';
-
 import { State } from '../interfaces/issue';
+import useStore from './useStore';
+
+// import { useIssuesStore } from 'src/stores/issues';
+// import { toRefs } from 'vue';
 
 const getIssues = async (state: State, labels: string[]): Promise<Issue[]> => {
   const params = new URLSearchParams();
@@ -24,9 +25,10 @@ const getIssues = async (state: State, labels: string[]): Promise<Issue[]> => {
 };
 
 const useIssues = () => {
-  const issueStore = useIssuesStore();
+  // const issueStore = useIssuesStore();
+  // const { state, labels } = toRefs(issueStore);
 
-  const { state, labels } = toRefs(issueStore);
+  const { labels, state } = useStore();
 
   const issuesQuery = useQuery(['issues', { state, labels }], () =>
     getIssues(state.value, labels.value)
